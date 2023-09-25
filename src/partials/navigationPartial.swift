@@ -15,6 +15,9 @@ let navigationPartial = { (page: Page?) -> String in """
             )</li>
             """
         })
+        <li>
+            <a href="/docc/documentation/bitcoin/">Documentation</a>
+        </li>
     </ul>
 </nav>
 """ }
