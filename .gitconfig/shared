@@ -19,5 +19,13 @@
 
 [commit]
 	gpgsign = true
+
+[remote "backup"]
+        url = craigwrong.github.com:craigwrong/swift-bitcoin.github.io
+        fetch = +refs/heads/*:refs/remotes/origin/*
+
+[push]
+        autoSetupRemote = true
+
 [include]
-  path = user
+    path = user
