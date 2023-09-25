@@ -16,7 +16,7 @@ func baseLayout (page: Page? = nil, post: Post? = nil, main: String) -> String {
         <header>
             <div>
                 <div class="site-title">
-                    <span class="name">Workchain Manipulator ⚡️</span> – Bitcoin-only software development</div>
+                    <span class="name">Swift Bitcoin</span> – Full node library</div>
                 \(navigationPartial(page))
             </div>
         </header>
