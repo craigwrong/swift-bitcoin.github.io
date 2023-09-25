@@ -1,0 +1,334 @@
+:root {
+    /* Layout */
+    --standard-v-margin: 1rem;
+    --standard-h-margin: 8px;
+
+    /* Fonts */
+    --default-font-size: 16px;
+
+    /* Colors */
+    --col-bg: #FFFFFF; /* "Background", white */
+    --col-bg-secondary: #A4CDFF; /* "Selection", light blue */
+    --col-text: rgba(0, 0, 0, .85); /* "Plain Text", translucent black */
+    --col-link: #C41A16; /* "Strings", red */
+    --col-accent-2: #9B2393; /* "Keywords", purple */
+    --col-accent-3: #1C00CF; /* "Characters", blue */
+    --col-accent: #3900A0; /* "Other Class Names", violet blue */
+    --col-accent-second: #6C36A9; /* "Other Function and Method Names", purple */
+    --col-accent-alt: #1C464A; /* "Project Class Names", light turquoise */
+    --col-accent-alt-second: #326D74; /* "Project Functions and Methods Names", light turquoise */
+    --col-code: #555;
+    --col-code-bg: #aaa;
+}
+
+/* Colors */
+:root {
+    --col-bg: #1F1F24; /* "Background", dark gray */
+    --col-bg-secondary: #515B70; /* "Selection", light gray */
+    --col-text: rgba(255, 255, 255, .85); /* "Plain Text", translucent white */
+    --col-link: #FC6A5D; /* "Strings", orange pink */
+    --col-accent-2: #FC5FA3; /* "Keywords", pink */
+    --col-accent-3: #D0BF69; /* "Characters", yellow */
+    --col-accent: #D0A8FF; /* "Other Class Names", light purple */
+    --col-accent-second: #A167E6; /* "Other Functions and Methods Names", light purple */
+    --col-accent-alt: #9EF1DD; /* "Project Class Names", light turquoise */
+    --col-accent-alt-second: #67B7A4; /* "Project Functions and Methods Names", light turquoise */
+    --col-code: #aaa;
+    --col-code-bg: #555;
+}
+
+/* Layout */
+
+body {
+    margin: var(--standard-v-margin) calc(2 * var(--standard-h-margin)) calc(5 * var(--standard-v-margin)) calc(2 * var(--standard-h-margin));
+}
+
+main {
+    max-width: 768px;
+    margin: 0 auto;
+}
+
+body > header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: calc(2 * var(--standard-v-margin));
+}
+
+.home > section > h1 {
+    display: block;
+}
+
+nav > ul {
+    margin: 0;
+    padding: 0;
+}
+
+nav > ul li {
+    display: inline;
+    padding: 0 4pt 0 0;
+}
+
+nav > ul li:not(:last-child)::after {
+    content: " |";
+}
+
+body > footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    border-top-width: 1px;
+    border-top-style: solid;
+    padding: .5rem 0;
+}
+
+body > footer > details > summary:focus {
+    outline: none;
+}
+
+pre > code {
+    display: block;
+    padding: 1rem 16pt;
+}
+
+figcaption + pre {
+    margin-top: 0.25rem;
+}
+
+.site-title {
+    margin-right: calc(1.5 * var(--standard-h-margin));
+}
+
+.intro {
+    background: var(--col-bg-secondary);
+    padding: calc(0 * var(--standard-v-margin)) calc(2 * var(--standard-h-margin)) calc(.125 * var(--standard-v-margin)) calc(2 * var(--standard-h-margin));
+    border-radius: 10px;
+}
+
+.summary {
+    margin-top: calc(1.5 * var(--standard-v-margin));
+}
+
+.summary > header {
+    margin: 0 0 calc(1.5 * var(--standard-v-margin)) 0;
+}
+
+.summary .date {
+    margin-top: 0;
+    margin-bottom: calc(.5 * var(--standard-v-margin));
+}
+
+.summary .title {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.summary .title > .subtitle {
+    display: block;
+    margin-top: calc(.25 * var(--standard-v-margin));
+}
+
+.summary main p {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.post > header {
+    margin: 2rem 0;
+}
+
+.post .date {
+    margin-top: 0;
+    margin-bottom: calc(.5 * var(--standard-v-margin));
+}
+
+.post .title {
+    margin-top: 0;
+    margin-bottom: calc(.5 * var(--standard-v-margin));
+}
+
+.post .title > em {
+    display: block;
+    margin-top: calc(.25 * var(--standard-v-margin));
+}
+
+.post .author {
+    margin: 0 0 var(--standard-v-margin) 0;
+}
+
+.post main h1 {
+    margin-top: 24px;
+    margin-bottom: 16px;
+}
+
+.post main p {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.post img {
+    display: block;
+    max-width: 95%;
+    margin: calc(2 * var(--standard-v-margin)) auto;
+}
+
+/* Fonts */
+
+body {
+    font-family: sans-serif;
+    font-size: var(--default-font-size);
+    line-height: 1.6;
+}
+
+a {
+    font-weight: medium;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.home > section > h1 {
+    text-align: center;
+}
+
+nav > ul li > a, nav > ul li > a:hover {
+    text-decoration: none;
+}
+
+body > footer {
+    text-align: center;
+}
+
+figcaption {
+    font-size: 12px;
+}
+
+.site-title {
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.summary a:hover {
+    text-decoration: underline;
+}
+
+.summary .date {
+    font-size: 1rem;
+    letter-spacing: 1.2px;
+}
+
+.summary .title {
+    font-size: 1.25rem;
+    font-weight: medium;
+    line-height: 1.3;
+}
+
+.summary .title > .subtitle {
+    font-size: 1.15rem;
+    font-weight: normal;
+    font-style: normal;
+}
+
+.post .date {
+    font-size: 1rem;
+    letter-spacing: 1.2px;
+}
+
+.post .title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    line-height: 1.3;
+}
+
+.post .title > em {
+    font-size: 1.25rem;
+    font-weight: normal;
+    font-style: normal;
+}
+
+.post .author {
+    font-size: 15px;
+}
+
+.post main h1 {
+    font-weight: 600;
+    line-height: 1.25;
+}
+
+.postTagsSection {
+    font-weight: bold;
+}
+
+.postDiscussionSection {
+    font-style: italic;
+}
+
+/* Colors */
+
+body {
+    color: var(--col-text);
+    background: var(--col-bg);
+}
+
+a, a:visited {
+    color: var(--col-link);
+}
+
+body > footer {
+    background: var(--col-bg);
+    border-top-color: lightgray;
+    opacity: .9;
+}
+
+pre > code {
+    color: var(--col-code);
+    background: var(--col-code-bg);
+}
+
+.site-title {
+    color: var(--col-accent-alt-second)
+}
+
+.site-title .name {
+    color: var(--col-accent-alt)
+}
+
+.intro {
+    background: var(--col-bg-secondary);
+}
+
+.summary a, .summary a:visited {
+    color: inherit;
+}
+
+.summary .date {
+    color: var(--col-accent-alt-second);
+}
+
+.summary .title {
+    color: var(--col-accent);
+}
+
+.summary .title > .subtitle {
+    color: var(--col-accent-alt);
+}
+
+.post .date {
+    color: var(--col-accent-alt);
+}
+
+.post .date a, .post .date a:visited {
+    color: inherit;
+}
+
+.post .author {
+    color: var(--col-accent-alt-second);
+}
+
+/* Transitions */
+
+body {
+    transition: .5s background, .5s color;
+}
