@@ -1,7 +1,7 @@
 import SwiftySites
 
 let posts = [
-    postIntroducingSwiftBitcoinLibrary,
+    post01, post02
 ]
 
 let site = Site(
