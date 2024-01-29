@@ -1,3 +1,27 @@
+let post03 = Post("/post/2024-01-29-end-of-year-update", "End of the Year Update", "2024-01-29T12:00:00Z", .announcements) { """
+
+Last year the development of _Swift Bitcoin_ really kicked off. All research work done on the `swift-bitcoin-poc` repo was carefully moved over and improved. This includes the transaction model and script engine with full segwit and taproot support.
+
+Other important milestones were reached. All consensus [BIPs](https://github.com/swift-bitcoin/swift-bitcoin/issues?q=label%3ABIP+is%3Aclosed) involving transactions are now implemented and tested using vectors from the specs.
+
+Data-driven [tests](https://github.com/swift-bitcoin/swift-bitcoin/issues?q=label%3ATesting+is%3Aclosed+) from Bitcoin Core covering valid/invalid transactions were ported in their totality. After considerable bug fixing and filling in blanks these tests ended up passing. The same goes for a substantial portion of taproot transaction tests.
+
+Porting Core's tests over meant enacting all different verification flags used for configuring the script interpreter to the point of full parity.
+
+More recently [wallet functionality](https://github.com/swift-bitcoin/swift-bitcoin/milestone/9) was added with support for encoding/decoding all types of addresses. Relevant BIPs were implemented, namely BIP32 and BIP39.
+
+The project grew from a simple library to a package containing several integration points. Cryptography and helper functions now live in their own module while executable targets were added for utility functions and peer-to-peer "full" node functionality.
+
+All functions calling `libsecp256k1` were rewritten in pure Swift leveraging C-language interoperability.
+
+A big effort was made to instate RPC and P2P client/server capabilities. Thanks to [SwiftNIO](https://github.com/apple/swift-nio) it was possible to do this in an optimized and robust way, setting the basis for a full-blown transport layer.
+
+This year's milestones are centered around implementing all block and transport-related BIPs. Internally a mempool, a blockchain and a chainstate will need to be created first in memory then efficiently on-disk.
+
+Externally the goal is to get Swift Bitcoin talking to other network clients sharing blocks and transactions. Here hoping to get there before October 31st!
+
+""" }
+
 let post02 = Post("/post/2023-10-03-swift-bitcoin-roadmap", "Swift Bitcoin Roadmap", "2023-10-03T12:00:00Z", .announcements) { """
 
 The ultimate goal for Swift Bitcoin is to become the most comprehensive SDK for bitcoin in Swift with features like mempool management, block mining and connectivity via the bitcoin protocol.
