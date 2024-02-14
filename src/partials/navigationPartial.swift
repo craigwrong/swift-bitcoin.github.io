@@ -3,7 +3,7 @@ import SwiftySites
 let navigationPartial = { (page: Page?) -> String in """
 <nav>
     <ul>
-        \([pageHome, pageAbout].reduce("") {
+        \([pageHome, pageInfo].reduce("") {
             $0 + """
             <li>\(page?.path == $1.path
                 ? """
@@ -16,7 +16,10 @@ let navigationPartial = { (page: Page?) -> String in """
             """
         })
         <li>
-            <a href="/docc/documentation/bitcoin/">Documentation</a>
+            <a href="/docc/documentation/bitcoin/">Docs</a>
+        </li>
+        \(/* External link */"")<li>
+            <a href="https://github.com/swift-bitcoin/swift-bitcoin">Code</a>
         </li>
     </ul>
 </nav>

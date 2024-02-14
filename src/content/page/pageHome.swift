@@ -4,8 +4,8 @@ let pageHome = Page("/", "Home") { #"""
 
 # Welcome to Swift Bitcoin
 
-Swift Bitcoin is a bitcoin library for Swift.
+_Swift Bitcoin_ is a Pure-Swift Bitcoin client implementation with full node capabilities.
 
-Find out more about it [here](/about).
+Find out more about it [here](/info).
 
 """# }

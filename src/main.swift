@@ -7,7 +7,7 @@ let posts = [
 let site = Site(
     config,
     content: (
-        [pageHome, pageAbout, pageCategories],
+        [pageHome, pageInfo, pageCategories],
         posts,
         categories
     ),
@@ -18,4 +18,4 @@ let site = Site(
     )
 )
 
-site.render()
+site.render(clean: true)
