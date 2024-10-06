@@ -1,6 +1,6 @@
 import SwiftySites
 
-let summaryPartial = { (post: Post) -> String in """
+func summaryPartial(_ post: Post) -> String { """
 <article class="summary">
     <header>
         <p class="date"><a href="\(post.path)">\(post.dateFormatted)</a> • <a href="/category/\(post.category)">\(post.category.name)</a></p>

@@ -33,7 +33,7 @@ jobs:
       - name: Install Swift
         uses: sersoft-gmbh/swifty-linux-action@v3
         with:
-          release-version: 5.9
+          release-version: 6.0
       - name: Build with SwiftySites
         run: swift run -c release generate --clean
       - name: Upload artifact

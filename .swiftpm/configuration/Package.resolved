@@ -1,0 +1,41 @@
+{
+  "pins" : [
+    {
+      "identity" : "gfmarkdown",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/swiftysites/gfmarkdown",
+      "state" : {
+        "branch" : "release",
+        "revision" : "287cab2f1206fa89b5e57177942978eab40a800f"
+      }
+    },
+    {
+      "identity" : "swift-argument-parser",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apple/swift-argument-parser.git",
+      "state" : {
+        "revision" : "41982a3656a71c768319979febd796c6fd111d5c",
+        "version" : "1.5.0"
+      }
+    },
+    {
+      "identity" : "swift-cmark",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apple/swift-cmark.git",
+      "state" : {
+        "branch" : "gfm",
+        "revision" : "fc07ab5da47975c5ef5f336acadfc02e8f706d30"
+      }
+    },
+    {
+      "identity" : "swiftysites",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/swiftysites/swiftysites",
+      "state" : {
+        "branch" : "release",
+        "revision" : "08b5a99027e088281c7cb0a41956db0f4792481d"
+      }
+    }
+  ],
+  "version" : 2
+}
