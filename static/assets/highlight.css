@@ -1,1 +1,30 @@
-pre code.hljs{display:block;overflow-x:auto;padding:1em}code.hljs{padding:3px 5px}.hljs{background:#23241f;color:#f8f8f2}.hljs-subst,.hljs-tag{color:#f8f8f2}.hljs-emphasis,.hljs-strong{color:#a8a8a2}.hljs-bullet,.hljs-link,.hljs-literal,.hljs-number,.hljs-quote,.hljs-regexp{color:#ae81ff}.hljs-code,.hljs-section,.hljs-selector-class,.hljs-title{color:#a6e22e}.hljs-strong{font-weight:700}.hljs-emphasis{font-style:italic}.hljs-attr,.hljs-keyword,.hljs-name,.hljs-selector-tag{color:#f92672}.hljs-attribute,.hljs-symbol{color:#66d9ef}.hljs-class .hljs-title,.hljs-params,.hljs-title.class_{color:#f8f8f2}.hljs-addition,.hljs-built_in,.hljs-selector-attr,.hljs-selector-id,.hljs-selector-pseudo,.hljs-string,.hljs-template-variable,.hljs-type,.hljs-variable{color:#e6db74}.hljs-comment,.hljs-deletion,.hljs-meta{color:#75715e}
+.hljs{background:#161616;color:#fff}
+pre code.hljs{display:block;padding:1em;overflow:auto;-webkit-overflow-scrolling:auto;white-space:pre;word-wrap:normal}
+code.hljs{padding:3px 5px;font-family:SF Mono,SFMono-Regular,ui-monospace,Menlo,monospace;font-size:1em;font-weight: 400;font-style:normal;letter-spacing:0}
+.hljs-addition{color:#03a10e}
+.hljs-comment,.hljs-quote{color:#7f8c98}
+.hljs-deletion{color:#ff3037}
+.hljs-keyword,.hljs-literal,.hljs-selector-tag{color:#ff7ab2}
+.hljs-string{color:#ff8170}
+.hljs-bullet,.hljs-meta,.hljs-number,.hljs-symbol,.hljs-tag{color:#d9c97c}
+.hljs-attr,.hljs-built_in,.hljs-builtin-name,.hljs-class,.hljs-params,.hljs-section,.hljs-title,.hljs-type{color:#dabaff}
+.hljs-attribute,.hljs-identifier,.hljs-subst{color:#fff}
+.hljs-doctag,.hljs-strong{font-weight:700}
+.hljs-emphasis,.hljs-link{font-style:italic}
+[data-syntax=swift] .hljs-meta{color:#ff7ab2}
+[data-syntax=swift] .hljs-class,[data-syntax=swift] .hljs-keyword+.hljs-params,[data-syntax=swift] .hljs-params+.hljs-params{color:unset}
+[data-syntax=json] .hljs-attr{color:#ff8170}
+
+/*
+.hljs-subst,.hljs-tag{color:#f8f8f2}
+.hljs-emphasis,.hljs-strong{color:#a8a8a2}
+.hljs-bullet,.hljs-link,.hljs-literal,.hljs-number,.hljs-quote,.hljs-regexp{color:#ae81ff}
+.hljs-code,.hljs-section,.hljs-selector-class,.hljs-title{color:#a6e22e}
+.hljs-strong{font-weight:700}
+.hljs-emphasis{font-style:italic}
+.hljs-attr,.hljs-keyword,.hljs-name,.hljs-selector-tag{color:#f92672}
+.hljs-attribute,.hljs-symbol{color:#66d9ef}
+.hljs-class .hljs-title,.hljs-params,.hljs-title.class_{color:#f8f8f2}
+.hljs-addition,.hljs-built_in,.hljs-selector-attr,.hljs-selector-id,.hljs-selector-pseudo,.hljs-string,.hljs-template-variable,.hljs-type,.hljs-variable{color:#e6db74}
+.hljs-comment,.hljs-deletion,.hljs-meta{color:#75715e}
+*/
