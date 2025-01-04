@@ -1,7 +1,7 @@
 import SwiftySites
 
 let posts = [
-    post01, post02, post03, post04
+    post01, post02, post03, post04, post05
 ]
 
 let site = Site(
