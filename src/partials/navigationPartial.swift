@@ -16,7 +16,7 @@ func navigationPartial(_ page: Page?) -> String { """
             """
         })
         <li>
-            <a href="/docc/documentation/bitcoin/">Docs</a>
+            <a href="/docs/documentation/bitcoin/">Docs</a>
         </li>
         \(/* External link */"")<li>
             <a href="https://github.com/swift-bitcoin/swift-bitcoin">Code</a>

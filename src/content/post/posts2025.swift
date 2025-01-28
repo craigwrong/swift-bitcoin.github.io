@@ -1,3 +1,85 @@
+let post08 = Post("/post/2025-01-28-improved-docs-generation", "Improved Docs Generation", "2025-01-28T12:00:00Z", .housekeeping) { """
+
+The [/docs](https://swift-bitcoin.github.io/docs) subfolder on this site is now generated independently from the [main repo](https://github.com/swift-bitcoin/swift-bitcoin) which means more frequent updates and accuracy in regards to the actual source code.
+
+Since the site is generated with Swift using [SwiftySites](https://github.com/swiftysites/swiftysites) it made sense to build the site and the DocC documentation in one go. But this requires the entire documentation site to be placed inside the _static_ folder of the statically generated site which is checked under version control.
+
+With the new architecture the DocC script is run independently and its results deployed straight to the _docs_ subfolder leaving the rest of the site unaffected. Similarly when a new blog post is published the documentation stays intact.
+
+The entire automation is orchestrated with GitHub Actions and GitHub Pages. To achieve the subfolder behavior the main site is hosted directly under the GitHub organization while the [Docs](https://github.com/swift-bitcoin/docs/actions/workflows/docs.yml) repository does the heavy lifting of producing the documentation site and deploying it to its own GitHub Page which is automatically linked to the subfolder.
+
+It is not possible for an action running out of the Swift Bitcoin repository to deploy to a different Pages URL. So the trick here is to use a dedicated docs repo and within the workflow checkout a different repository – in this case `swift-bitcoin`.
+
+```yaml
+…
+# Build documentation job
+build:
+runs-on: ubuntu-latest
+steps:
+  - name: Checkout
+    uses: actions/checkout@v4
+    with:
+      repository: swift-bitcoin/swift-bitcoin
+…
+
+# Deployment job
+deploy:
+environment:
+  name: github-pages
+  url: ${{ steps.deployment.outputs.page_url }}
+runs-on: ubuntu-latest
+needs: build
+steps:
+  - name: Deploy to GitHub Pages
+    id: deployment
+    uses: actions/deploy-pages@v4
+```
+
+For more details check out the workflow's [source](https://github.com/swift-bitcoin/docs/blob/release/.github/workflows/docs.yml). Swift Bitcoin's website and docs is completely open source.
+
+Hopefully this change will lead to better quality documentation.
+""" }
+
+let post07 = Post("/post/2025-01-27-new-binarycodable-framework", "New BinaryCodable Framework", "2025-01-27T12:00:00Z", .implementation) { """
+
+The new [BinaryCodable](/docs/crypto/documentation/bitcoincrypto/binarycodable) framework adds simplicity, performance and stability to the way Bitcoin types are parsed and serialized from binary streams.
+
+The idea of a `BinaryCodable` protocol is inspired by Swift's own `Codable` protocol. While it is possible to encode/decode binary formats using Apple's framework, the requirement to define keys for all fields hints at a different use case.
+
+To make a type binary decodable just define an initializer:
+
+```swift
+init(from decoder: inout BinaryDecoder) throws(BinaryDecodingError)
+```
+
+Use `BinaryDecoder` to decode each field, like in the case of a non-witness Bitcoin transaction:
+
+```swift
+version = try decoder.decode()
+ins = try decoder.decode()
+outs = try decoder.decode()
+locktime = try decoder.decode()
+```
+
+To encode simply implement the `encode(to:)` method and use the provided `BinaryEncoder` instance to encode each value.
+
+```swift
+public func encode(to encoder: inout BinaryEncoder) {
+    encoder.encode(version)
+    encoder.encode(ins)
+    encoder.encode(outs)
+    encoder.encode(locktime)
+}
+```
+
+Notice how because `TxIn` and `TxOut` are themselves binary codable, a collection of inputs and outputs can be trivially handled by the encoder and decoder. The framework is tailored for Bitcoin development so the variable integer prefix is handled automatically.
+
+This will greatly improve all serialization logic across the Swift Bitcoin codebase both in readability as well as speed.
+
+The Binary Codable API is public so you can also use it independently by simply importing `BitcoinCrypto`.
+
+""" }
+
 let post06 = Post("/post/2025-01-16-testing-transport-layer", "Testing the Transport Layer", "2025-01-16T12:00:00Z", .testing) { """
 
 Creating meaningful unit tests can be difficult – even more when the system under test is a transport layer protocol like the [Bitcoin wire protocol](https://en.bitcoin.it/wiki/Protocol_documentation).

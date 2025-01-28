@@ -20,7 +20,7 @@ In additions to these libraries, the package delivers two command-line tools:
 
 # Improved API examples
 
-As an example of the simplicity of the new APIs here's some code snippets taken from the revamped [documentation](https://swift-bitcoin.github.io/docc/documentation/bitcoin/):
+As an example of the simplicity of the new APIs here's some code snippets taken from the revamped [documentation](https://swift-bitcoin.github.io/docs/documentation/bitcoin/):
 
 ## Running a simple script
 
