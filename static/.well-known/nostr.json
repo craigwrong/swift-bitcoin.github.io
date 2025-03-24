@@ -4,7 +4,7 @@
     },
     "relays": {
         "54b31535e20494c7801d74ba53e813a86477eda5b579319dc7bdd8a096b66dbd": [
-            "wss://damus.io",
+            "wss://relay.damus.io/",
             "wss://relay.primal.net/",
             "wss://relay.iris.to/",
             "wss://iris.to/"
