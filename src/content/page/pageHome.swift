@@ -2,10 +2,8 @@ import SwiftySites
 
 let pageHome = Page("/", "Home") { #"""
 
-# Swift Bitcoin
-
-Pure-Swift Bitcoin client implementation with full node capabilities.
-
-Find out more about it [here](/info).
+| | |
+|:-:|-|
+| <img src="/assets/SwiftBitcoin.png" alt="Swift Bitcoin Logo" style="width: 100%; max-width: 250px;"> | Multiplatform Bitcoin SDK for Swift and beyond.<br /><br />BIPs compliant network client with full node capabilities.<br /><br />Find out more about Swift Bitcoin [here](/info). |
 
 """# }
