@@ -1,11 +1,92 @@
-let post11 = Post("/post/2025-03-27-psbt", "Partially Signed Bitcoin Transactions", "2025-03-27T12:00:00Z", .specification) { """
+let post12 = Post("/post/2025-06-17-start-testnet4-effort", "Start of Testnet 4 Compatibility Effort", "2025-06-17T12:00:00Z", .announcements) { """
+Testnet compatibility is a mandatory milestone for any piece of Bitcoin-related software aiming to eventually reach production stage.
 
-One popular request for Swift Bitcoin is to support the Partially Signed Bitcoin Transactions (PSBT) format defined in BIP174 et al. Making PSBT flows available early on is great not only for users but as a trial for the entire framework.
+It's also great timing that the old testnet 3 network is being decommissioned in favor of a more robust version 4.
 
-The PSBT version 0 and 2 specifications cover pretty much all standard interactions with Bitcoin transactions from when they are first created and funded, until they are broadcasted to the network.
+As of the start of this week the primary objective of the Swift Bitcoin project will be to support Testnet 4. This includes connecting to nodes and sync'ing the blockchain, as well as compatibility with all preexisting functionality like wallet and PSBT.
+
+The completion of this phase will likely justify the release of the first beta. We have set a deadline of 6 months to try to get there with as much quality as possible.
+
+Stay tuned for more announcements regarding this effort, coming soon.
 """ }
 
-let post10 = Post("/post/2025-03-24-node-config-swift", "Node Configuration in Swift", "2025-03-24T12:00:00Z", .implementation) { """
+let post11 = Post("/post/2025-06-13-psbt", "Partially Signed Bitcoin Transactions", "2025-06-13T12:00:00Z", .specification) { """
+
+PSBT support as defined by BIP174 is an important feature to have for any Bitcoin SDK. It serves as a compatibility layer between different software implementations as well as dedicated hardware devices such as wallets and signers.
+
+While we hesitated at first to include this feature before Swift Bitcoin 0.1.0 is even out, a consideration was made that it would put the entire framework to the test – in a good way.
+
+Given that PSBTs cover the entire lifecycle of a Bitcoin transaction it serves as validation that creation and signing flows can be built on top of the wallet API.
+
+So far most of the effort was concentrated in passing the BIP's official test vectors. This ensures correct parsing and serialization as well as verifying preconditions for each role: creator, updater, signer, combiner, finalizer and extractor.
+
+There's still room for improvement – specially on the ergonomics of the public interface – but the main functionality is already present.
+
+```swift
+import BitcoinPSBT
+
+// Creator
+// `tx` is a multisig transaction with with P2SH and P2SH-P2WSH inputs and 2 outputs.
+var psbt = try PartiallySignedTx(tx) // Create from unsigned transaction
+let psbtData = psbt.data // Serialize to pass it around
+
+// Updater 1
+psbt = try PartiallySignedTx(psbtData) // Parse from serialized format
+psbt.update(input: 0, fund1)
+psbt.update(input: 0, redeemScript: redeem0)
+psbt.update(input: 0, pubkey0, path0)
+psbt.update(input: 0, pubkey1, path1)
+
+psbt.update(input: 1, fund0.outs[1])
+psbt.update(input: 1, redeemScript: redeem1)
+psbt.update(input: 1, witnessScript: witness)
+psbt.update(input: 1, pubkey2, path2)
+psbt.update(input: 1, pubkey3, path3)
+
+psbt.update(out: 0, pubkey4, path4)
+psbt.update(out: 1, pubkey5, path5)
+
+let psbtData1 = psbt.data
+
+// Second updater
+psbt = try PartiallySignedTx(psbtData1)
+psbt.update(input: 0, SighashType.all)
+psbt.update(input: 1, SighashType.all)
+let psbtData = psbt.data2
+
+// Signer
+psbt = try PartiallySignedTx(psbtData2)
+try psbt.sign(input: 0, using: secretKey0)
+try psbt.sign(input: 1, using: secretKey1)
+let psbtData3 = psbt.data
+
+// Second signer
+psbt = try PartiallySignedTx(psbtData3)
+try psbt.sign(input: 0, using: secretKey0)
+try psbt.sign(input: 1, using: secretKey1)
+let psbtData4 = psbt.data
+
+// Combiner
+psbt = try PartiallySignedTx(psbtData4)
+psbt.combine(with: psbt2)
+let psbtData5 = psbt.data
+
+// Finalizer
+psbt = try PartiallySignedTx(psbtData5)
+psbt.finalize()
+let psbtData6 = psbt.data
+
+// Extractor
+psbt = try PartiallySignedTx(psbtData6)
+let tx = psbt.extractTx()
+
+// Assuming we have a configured node.
+…
+node.sendTransaction(tx) // Broadcast signed transaction
+```
+""" }
+
+let post10 = Post("/post/2025-04-24-node-config-swift", "Node Configuration in Swift", "2025-04-24T12:00:00Z", .implementation) { """
 
 A cool feature of the Swift Package Manager (SPM) is how its package manifest format is itself part of the Swift Language. This is easier before compilation when the project's source code and the Swift compiler are at hand but can that approach be extended for compiled tools like `bcnode`?
 
@@ -14,6 +95,17 @@ We accepted the challenge as it would be fitting for our product to have its con
 Actually why not make the JSON format precisely match the serialization of the Swift Bitcoin configuration format in Swift? This way we can decode a JSON configuration and get the internal representation which we can work with directly in our source code. Conversely, if we take a `config.swift` file and serialize the object defined inside, we will end up with the JSON version of the same parameters.
 
 So how can we achieve this versatility? Swift can act as both a compiled or an interpreted language which definitely can come in handy. One thing it cannot do though is evaluate Swift code from within a compiled program so we need to be creative. Our solution involves reading the configuration file containing a variable declaration. We will prepend that declaration with the necessary type definition.
+
+The end result is a pure Swift configuration file that could look like this:
+
+```swift
+let feeRate = 100
+let config = NodeConfig(
+    name: "My Node with fee rate of \\(feeRate)",
+    feeRate: feeRate
+    …
+}
+```
 """ }
 
 let post09 = Post("/post/2025-03-21-miniscript-dsl", "Miniscript DSL", "2025-03-21T12:00:00Z", .specification) { """
