@@ -1,3 +1,22 @@
+let post15 = Post("/post/2025-12-03-end-of-year-balance", "End of Year Balance (2025)", "2025-12-03T12:00:00Z", .announcements) { """
+
+This year has been pivotal for Swift Bitcoin reaching milestones like testnet synchronization and our first public [release](https://github.com/swift-bitcoin/swift-bitcoin/releases). Developers now have a stable package to use within their Swift projects and users can run the latest version of the daemon with [Docker](https://hub.docker.com/orgs/swiftbitcoin).
+
+The material support of [OpenSats](https://opensats.org) has been and continues to be crucial in validating the goals and providing the motivation for delivering a product that's in line with the needs of the broader Bitcoin community. Check out the latest [progress report](https://github.com/swift-bitcoin/opensats/blob/release/progress/report-002.md) to get a more detailed view of what has been delivered recently and where things are going next year.
+
+Building out towards supporting _Testnet 4_ has made our code base more robust and solid. It has helped us fill holes in functionality and fix faulty logic. Now the project is mature enough to start thinking about the next big objective: Mainnet Support.
+
+Validating the main chain poses a set of complex challenges like correctly handling soft forks at different block heights. But no doubt the biggest task will be making Swift Bitcoin efficient enough to be able to handle the almost [one terabyte](https://ycharts.com/indicators/bitcoin_blockchain_size) of transaction history and validate all of it in reasonable time.
+
+So the focus will now shift to optimization for which we will need to first gather accurate measurements and analyze the runtime behavior and resource usage of the node. Necessary advanced tooling has been put in place to [monitor](https://github.com/apple/swift-log), [track](https://github.com/apple/swift-metrics), [profile](https://github.com/apple/swift-profile-recorder), [benchmark](https://www.swift.org/blog/benchmarks/) and [load test](https://developer.apple.com/documentation/xcode/writing-and-running-performance-tests) the system.
+
+Bringing in cutting edge Swift language features like inline arrays, spans and more will be a top priority as they will have an effect on speed. But the architecture of Swift Bitcoin itself must evolve and incorporate cache facilities and more.
+
+So here's to an exciting Year 2026 for Swift and Bitcoin development! 
+
+PS: As always if you feel you can contribute in any capacity whether it be as [developer](/docs/documentation/bitcoin/gettingstarted) or [tester](/docs/documentation/bitcoin/running) please [get in touch](/info) or take a look at our list of [Good First Issues](https://github.com/swift-bitcoin/swift-bitcoin/issues?q=is%3Aissue%20state%3Aopen%20label%3AGFI) to get you started.
+""" }
+
 let post14 = Post("/post/2025-09-18-progress-report", "Progress Report (September 2025)", "2025-09-18T12:00:00Z", .announcements) { """
 
 The last 3 months of Swift Bitcoin development have been intense as we advance firmly towards testnet compatibility and a stable public API.

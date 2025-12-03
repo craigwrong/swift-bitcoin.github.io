@@ -2,7 +2,7 @@ import SwiftySites
 
 let pageInfo = Page("/info", "Info") { #"""
 
-# Bitcoin Swift
+# Swift Bitcoin
 
 Swift Bitcoin is both a comprehensive Bitcoin SDK for Swift and a standalone full-featured Bitcoin network client with full node capabilities.
 

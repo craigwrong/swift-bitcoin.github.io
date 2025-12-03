@@ -3,7 +3,7 @@ import SwiftySites
 let posts = [
     post01, post02, post03, // 2023
     post04, // 2024
-    post05, post06, post07, post08, post09, post10, post11, post12, post13, post14 // 2025
+    post05, post06, post07, post08, post09, post10, post11, post12, post13, post14 , post15 // 2025
 ]
 
 let site = Site(
